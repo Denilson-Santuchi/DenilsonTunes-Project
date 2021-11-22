@@ -68,6 +68,7 @@ export default class Login extends Component {
             nome:
             <input
               data-testid="login-name-input"
+              id="name"
               name="userName"
               type="text"
               value={ userName }
