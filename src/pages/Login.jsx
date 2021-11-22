@@ -1,4 +1,4 @@
-// requisito 2 feito em grupo com Igor Hamzi, Luis Fllipe e Raphael Oliveira.
+// requisito 2 e 3 feito em grupo com Igor Hamzi, Luis Fllipe e Raphael Oliveira.
 
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
