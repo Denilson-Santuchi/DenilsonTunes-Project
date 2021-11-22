@@ -22,6 +22,7 @@ export default class Header extends Component {
     const { name } = await getUser();
     this.setState({ name, loading: false });
   }
+  // buscar nome no local Storage e seta loading para false.
 
   render() {
     const {
