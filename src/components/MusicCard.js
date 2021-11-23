@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Load from './Load';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 export default class MusicCard extends Component {
   constructor() {
@@ -14,6 +14,11 @@ export default class MusicCard extends Component {
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.favoritesSong = this.favoritesSong.bind(this);
+  }
+
+  componentDidMount() {
+    this.favoritesSong();
   }
 
   async onInputChange() {
@@ -21,6 +26,13 @@ export default class MusicCard extends Component {
     this.setState({ loading: true, check: true });
     await addSong(trackId);
     this.setState({ loading: false });
+  }
+
+  async favoritesSong() {
+    const { music: { trackId } } = this.props;
+    const favoriteMusic = await getFavoriteSongs();
+    favoriteMusic.some((song) => song.trackId === trackId
+      && this.setState({ check: true }));
   }
 
   render() {
