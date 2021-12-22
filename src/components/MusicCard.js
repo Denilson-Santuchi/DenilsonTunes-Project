@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Load from './Load';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 export default class MusicCard extends Component {
   constructor() {
@@ -15,6 +15,7 @@ export default class MusicCard extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.favoritesSong = this.favoritesSong.bind(this);
+    this.removeFavoriteSong = this.removeFavoriteSong.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +26,13 @@ export default class MusicCard extends Component {
     const { music: { trackId } } = this.props;
     this.setState({ loading: true, check: true });
     await addSong(trackId);
+    this.setState({ loading: false });
+  }
+
+  async removeFavoriteSong() {
+    const { music: { trackId } } = this.props;
+    this.setState({ loading: true, check: false });
+    await removeSong(trackId);
     this.setState({ loading: false });
   }
 
@@ -42,6 +50,7 @@ export default class MusicCard extends Component {
         loading,
       },
       onInputChange,
+      removeFavoriteSong,
     } = this;
     const { music: { trackName, previewUrl, trackId } } = this.props;
     return (
@@ -64,7 +73,7 @@ export default class MusicCard extends Component {
               id={ trackId }
               type="checkbox"
               checked={ check }
-              onChange={ onInputChange }
+              onChange={ check ? removeFavoriteSong : onInputChange }
             />
           </label>
         )}
