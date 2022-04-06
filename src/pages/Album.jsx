@@ -1,5 +1,3 @@
-// requisito 7 feito em grupo com Igor Hamzi, Luis Fllipe e Raphael Oliveira.
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';

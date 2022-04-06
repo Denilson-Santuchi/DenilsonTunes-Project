@@ -1,5 +1,3 @@
-// requisito 5 e 6 feito em grupo com Igor Hamzi, Luis Fllipe e Raphael Oliveira.
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';

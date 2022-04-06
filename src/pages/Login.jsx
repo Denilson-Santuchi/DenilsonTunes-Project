@@ -1,5 +1,3 @@
-// requisito 2 feito em grupo com Igor Hamzi, Luis Fllipe e Raphael Oliveira.
-
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Load from '../components/Load';
